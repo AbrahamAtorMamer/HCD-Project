@@ -10,13 +10,14 @@ STATIC_DIR=os.path.join(BASE_DIR,'static')
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = '#vw(03o=(9kbvg!&2d5i!2$_58x@_-3l4wujpow6(ym37jxnza'
-SECRET_KEY = os.environ.get('SECRET_KEY', default='#vw(03o=(9kbvg!&2d5i!2$_58x@_-3l4wujpow6(ym37jxnza')
+SECRET_KEY = '#vw(03o=(9kbvg!&2d5i!2$_58x@_-3l4wujpow6(ym37jxnza'
+# SECRET_KEY = os.environ.get('SECRET_KEY', default='#vw(03o=(9kbvg!&2d5i!2$_58x@_-3l4wujpow6(ym37jxnza')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG',default=True,cast=bool)
+DEBUG = True
+# DEBUG = os.environ.get('DEBUG',default=True,cast=bool)
 
-ALLOWED_HOSTS = []
-
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
 
 # Application definition
 
@@ -74,9 +75,22 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
-
 DATABASES = {
-    'default': dj_database_url.config(               default='',        conn_max_age=600    )}
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ununuzi_db',
+        'USER': 'postgres',
+        'PASSWORD': 'sebistiano',
+        'HOST': 'localhost',  # or your PostgreSQL server's IP address
+        'PORT': '5432',       # default PostgreSQL port
+        'OPTIONS': {
+            'options': '-c timezone=UTC',
+        },
+    }
+}
+
+# DATABASES = {
+#     'default': dj_database_url.config(               default='',        conn_max_age=600    )}
 
 
 # Password validation
@@ -109,23 +123,30 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 # This setting tells Django at which URL static files are going to be served to the user.
 # Here, they will be accessible at your-domain.onrender.com/static/...
-STATIC_URL = '/static/'
-# Following settings only make sense in production and may break development environments.
-if not DEBUG:    # Tell Django to copy statics to the `static files` directory
-    # in your application directory on Render.
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    # Turn on the WhiteNoise storage backend that takes care of compressing static files
-    # and creating unique names for each version so they can safely be cached forever.
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATIC_URL = '/static/'
+# # Following settings only make sense in production and may break development environments.
+# if not DEBUG:    # Tell Django to copy statics to the `static files` directory
+#     # in your application directory on Render.
+#     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#     # Turn on the WhiteNoise storage backend that takes care of compressing static files
+#     # and creating unique names for each version so they can safely be cached forever.
+#     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_DIRS = [BASE_DIR/'static',]
+# STATIC_ROOT = BASE_DIR/'staticfiles'
+# STATIC_URL = '/static/'
 
+# STATICFILES_DIRS=[STATIC_DIR,]
 
+# MEDIA_ROOT=os.path.join(BASE_DIR,'static')
+STATICFILES_DIRS = [BASE_DIR/'static',]
+STATIC_ROOT = BASE_DIR/'staticfiles'
 
 LOGIN_REDIRECT_URL='/afterlogin'
 
