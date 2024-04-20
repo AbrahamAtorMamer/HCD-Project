@@ -140,13 +140,25 @@ USE_TZ = False
 #     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # STATICFILES_DIRS = [BASE_DIR/'static',]
 # STATIC_ROOT = BASE_DIR/'staticfiles'
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 
-STATICFILES_DIRS=[STATIC_DIR,]
+# STATICFILES_DIRS=[STATIC_DIR,]
 
-MEDIA_ROOT=os.path.join(BASE_DIR,'static')
+# MEDIA_ROOT=os.path.join(BASE_DIR,'static')
 # STATICFILES_DIRS = [BASE_DIR/'static',]
 # STATIC_ROOT = BASE_DIR/'staticfiles'
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+STATIC_URL = '/static/'
+
+# Additional directories from which Django will collect static files
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+# Directory where Django will collect static files for deployment
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 LOGIN_REDIRECT_URL='/afterlogin'
 
