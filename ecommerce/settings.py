@@ -16,7 +16,7 @@ SECRET_KEY = '#vw(03o=(9kbvg!&2d5i!2$_58x@_-3l4wujpow6(ym37jxnza'
 DEBUG = True
 # DEBUG = os.environ.get('DEBUG',default=True,cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 # ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
 
 # Application definition
@@ -150,15 +150,18 @@ USE_TZ = False
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 
-# Additional directories from which Django will collect static files
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
+# # Additional directories from which Django will collect static files
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static'),
+# ]
 
-# Directory where Django will collect static files for deployment
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# # Directory where Django will collect static files for deployment
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+MEDIA_URLS ='/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_REDIRECT_URL='/afterlogin'
 
