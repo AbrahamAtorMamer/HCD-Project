@@ -16,8 +16,8 @@ SECRET_KEY = '#vw(03o=(9kbvg!&2d5i!2$_58x@_-3l4wujpow6(ym37jxnza'
 DEBUG = True
 # DEBUG = os.environ.get('DEBUG',default=True,cast=bool)
 
-# ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
+ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
 
 # Application definition
 
@@ -140,13 +140,13 @@ USE_TZ = False
 #     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # STATICFILES_DIRS = [BASE_DIR/'static',]
 # STATIC_ROOT = BASE_DIR/'staticfiles'
-# STATIC_URL = '/static/'
+STATIC_URL = '/static/'
 
-# STATICFILES_DIRS=[STATIC_DIR,]
+STATICFILES_DIRS=[STATIC_DIR,]
 
-# MEDIA_ROOT=os.path.join(BASE_DIR,'static')
-STATICFILES_DIRS = [BASE_DIR/'static',]
-STATIC_ROOT = BASE_DIR/'staticfiles'
+MEDIA_ROOT=os.path.join(BASE_DIR,'static')
+# STATICFILES_DIRS = [BASE_DIR/'static',]
+# STATIC_ROOT = BASE_DIR/'staticfiles'
 
 LOGIN_REDIRECT_URL='/afterlogin'
 
